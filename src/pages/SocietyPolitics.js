@@ -1,21 +1,10 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-
-function HomePage(){
-    //const [a, seta] = useState();
-
-    //async function calling_api(){
-        //const res = await fetch('./fee-assessment-categories')
-        //const data = await res.json()
-        //seta(data)
-        //console.log(data)
-    //}
+function SocietyPoliticsPage() {
 
     const [posts, setPosts] = useState([])
-
+    
     useEffect(() => {
         axios
-            .get('./fee-assessment-categories')
+            .get('./fee-assessment-books?categoryId=19')
             .then(res => {
                 console.log(res)
                 setPosts(res.data)
@@ -24,7 +13,7 @@ function HomePage(){
                 console.log(err)
             })
     })
-
+    
     return (
         <div style={{
             display: 'flex',
@@ -33,12 +22,12 @@ function HomePage(){
         }}>
             <ul>
                 {
-                    posts.map(post => <input type="button" value={post.name}></input>)
+                    posts.map(post => <li key={posts.id}>{post.name}</li>)
                 }
             </ul>
         </div>
     );
-}
 
-export default HomePage;
- 
+}
+    
+export default SocietyPoliticsPage

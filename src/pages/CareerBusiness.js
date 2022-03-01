@@ -1,21 +1,10 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-
-function HomePage(){
-    //const [a, seta] = useState();
-
-    //async function calling_api(){
-        //const res = await fetch('./fee-assessment-categories')
-        //const data = await res.json()
-        //seta(data)
-        //console.log(data)
-    //}
+function CareerBusinessPage() {
 
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
         axios
-            .get('./fee-assessment-categories')
+            .get('./fee-assessment-books?categoryId=11')
             .then(res => {
                 console.log(res)
                 setPosts(res.data)
@@ -33,12 +22,13 @@ function HomePage(){
         }}>
             <ul>
                 {
-                    posts.map(post => <input type="button" value={post.name}></input>)
+                    posts.map(post => <li key={posts.id}>{post.name}</li>)
                 }
             </ul>
         </div>
     );
 }
 
-export default HomePage;
- 
+
+
+export default CareerBusinessPage
